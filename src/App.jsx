@@ -28,7 +28,7 @@ const generateRandomColor = () => {
 const App = () => {
   const [correctAnswer,setCorrectAnswer] = useState('')
   const [answers,setAnswers] = useState([])
-  const [isCorrect,setIsCorrect] = useState(true)
+  const [isCorrect,setIsCorrect] = useState(undefined)
   const [points,setPoints] = useState(0)
   console.log(correctAnswer, isCorrect);
 
@@ -86,6 +86,12 @@ const App = () => {
     color:'white',
     marginTop:"20px"
   }
+  const correctDiv = {
+    textAlign: "center",
+    backgroundColor: 'green',
+    color:'white',
+    marginTop:"20px"
+  }
 
 
   return (
@@ -103,7 +109,10 @@ const App = () => {
           }
         </div>
         {
-         !isCorrect && <div style={wrongDiv}>Wrong </div>
+         isCorrect === false && <div style={wrongDiv}>Wrong </div>
+        }
+        {
+          isCorrect === true && <div style={correctDiv}>Correct </div>
         }
       </div>
     </div>
